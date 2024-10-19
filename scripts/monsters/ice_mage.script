@@ -264,6 +264,7 @@
 { [server] game_death
 	svplaysound 2 0 SOUND_FREEZE_BEAM	
 	clientevent remove all MY_LIGHT_SCRIPT
+	clientevent update all MY_LIGHT_SCRIPT remove_me
 }
 
 { [server] game_struck

@@ -159,6 +159,7 @@
 { [server] remove_light
 
 	clientevent remove all MY_LIGHT_SCRIPT
+	clientevent update all MY_LIGHT_SCRIPT remove_me
 }
 
 
