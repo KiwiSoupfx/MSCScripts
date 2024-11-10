@@ -7,7 +7,7 @@
 	//chance grows linearly as more chests are spawned (up to 9x)
 	
 	//setvard ARTI2_CHANCE 0.9 //fire star
-	setvard ARTI_CHANCE 0.55 //steambow
+	setvar ARTI_CHANCE 0.55 //steambow
 }
 
 #include chests/base_treasurechest
