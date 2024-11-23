@@ -41,7 +41,7 @@
 
 { enable_passive_regen_check
 
-	repeatdelay 1.5
+	repeatdelay 1.0
 
 	if FAN_LOOP == 0
 
