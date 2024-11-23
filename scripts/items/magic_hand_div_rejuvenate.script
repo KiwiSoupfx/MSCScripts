@@ -30,12 +30,25 @@
 
 {  spell_spawn
 
-   name 		Rejuvination
+   name 		Rejuvenation
    desc 		"Replenish yours or an ally's health."
 
    setvard FAN_LOOP 0
 
+   callevent add_delay
    callevent passive_regen
+}
+
+{ enable_passive_regen_check
+
+	repeatdelay 1.5
+
+	if FAN_LOOP == 0
+
+	if ( REGEN_DELAY <= game.time ) //Check if spell is ready to be used, use WAIT_BASE so we aren't checking a different time
+	{
+		setvard FAN_LOOP 1 //Enable passive regen
+	}
 }
 
 {  spell_casted	//PARAM1: "none"/"npc"/"world"   2: Attack end Position   3: Entity hit (if any)
@@ -139,13 +152,6 @@
 	effect glow L_HEAL_TGT (0,255,0) 256 1 1
 }
 
-{ prepare_success_done
-		//volume 5
-		//playsound const.sound.item 5 UP_SOUND
-		setvard FAN_LOOP 1
-		//callevent 2 loop_sound
-}
-
 { passive_regen
 
 	repeatdelay 0.5
@@ -196,4 +202,10 @@
 { end_spell
 	//remove any cl effects here
 	deleteme
+}
+
+{ add_delay
+	setvard REGEN_DELAY game.time
+	add REGEN_DELAY SPELL_PREPARE_TIME
+	callevent enable_passive_regen_check
 }
