@@ -45,7 +45,7 @@
 
 	if FAN_LOOP == 0
 
-	if ( REGEN_DELAY <= game.time ) //Check if spell is ready to be used, use WAIT_BASE so we aren't checking a different time
+	if ( REGEN_DELAY <= game.time ) //Check if spell is ready to be used 
 	{
 		setvard FAN_LOOP 1 //Enable passive regen
 	}
