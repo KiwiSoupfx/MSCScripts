@@ -5,7 +5,7 @@
 {
 	const NO_REGISTER 1
 	const SOUND_SHOOT magic/cast.wav
-	const ICESHIELD_RANGE 389 //Opted for slightly higher range because it's not origin to origin, it's the actual range of the trace from anywhere on an entity
+	const ICESHIELD_RANGE 389 //Opted for slightly higher range because it's not origin to origin, it's the actual range of the traced line from anywhere on an entity
 
 	const MELEE_ATK_DURATION 0.65
 
@@ -80,7 +80,7 @@
 	local TRACED_LINE $get_traceline(TRACE_START,TRACE_END,ent,PLR_ID)
 
 	//DEBUG
-	effect beam point laserbeam.spr 20 TRACE_START TRACE_END (255,255,0) 255 0.7 30
+	//effect beam point laserbeam.spr 20 TRACE_START TRACE_END (255,255,0) 255 0.7 30
 
 	return **clear
 	return TRACED_LINE
