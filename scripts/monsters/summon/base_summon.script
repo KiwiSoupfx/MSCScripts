@@ -64,7 +64,7 @@
 
 	catchspeech basesummon_say_come come follow return disengage
    	catchspeech basesummon_say_defend defend
-   	catchspeech basesummon_say_attacktarget kill "attack him" "attack her" "attack it" sick
+   	catchspeech basesummon_say_attacktarget kill "attack him" "attack her" "attack it" sick sic
    	catchspeech basesummon_say_attackall attack hunt fight "kill them all" "kill everything" "go away" move
    	catchspeech basesummon_say_report status report health hp strength power
    	catchspeech basesummon_say_dismiss dismiss unsummon vanish
