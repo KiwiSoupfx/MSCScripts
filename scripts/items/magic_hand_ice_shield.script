@@ -5,6 +5,7 @@
 {
 	const NO_REGISTER 1
 	const SOUND_SHOOT magic/cast.wav
+	const ICESHIELD_RANGE 389 //Opted for slightly higher range because it's not origin to origin, it's the actual range of the traced line from anywhere on an entity
 
 	const MELEE_ATK_DURATION 0.65
 
@@ -39,7 +40,8 @@
 	if ( $get(ent_owner,mp) < MANA_COST ) dplayermessage ent_owner "Insufficient mana."
 	if $get(ent_owner,mp) >= MANA_COST
 
-	local SPELL_TARGET $get(ent_owner,target)
+	//local SPELL_TARGET $get(ent_owner,target)
+	local SPELL_TARGET $func(func_get_ray_target,ent_owner,ICESHIELD_RANGE)
 
 	//is this target valid, if not, make owner target
 	if ( !$get(SPELL_TARGET,isalive) ) local SPELL_TARGET $get(ent_owner,id)
@@ -64,4 +66,22 @@
 	{
 		applyeffect SPELL_TARGET SPELL_SCRIPT FINAL_DURATION $get(ent_owner,id) ICESHIELD_FORMULA //<duration> <shielder> <damage_reduction>
 	}
+}
+
+{ func_get_ray_target //<player> <range> returns eyetarget entity
+	local PLR PARAM1
+	local PLR_ID $get(PLR,id)
+	local PLR_ORG $get(PLR,eyepos)
+	local PLR_ANG $get(PLR,viewangles)
+	if ( $get(PLR,sitting) == 1 ) vectoradd PLR_ORG z -27 //account for where eyes are
+	local TRACE_START PLR_ORG
+	local TRACE_END PLR_ORG
+	vectoradd TRACE_END $relpos(PLR_ANG,$vec(0,PARAM2,0))
+	local TRACED_LINE $get_traceline(TRACE_START,TRACE_END,ent,PLR_ID)
+
+	//DEBUG
+	//effect beam point laserbeam.spr 20 TRACE_START TRACE_END (255,255,0) 255 0.7 30
+
+	return **clear
+	return TRACED_LINE
 }
