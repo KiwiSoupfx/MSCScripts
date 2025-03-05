@@ -5,6 +5,7 @@
 	const LIGHT_COLOR		(255,255,128)
 	const LIGHT_PLAYER_SCALE	0.3
 	const LIGHT_DROPPED_SCALE	0.5
+	const LIGHT_DURATION		5
 	precache SPRITE_FIRE
 	precache SPRITE_FIRE_FIXED
 }
@@ -62,7 +63,7 @@
 }
 
 { [client] create_light
-	cleffect light new (0,0,0) LIGHT_RADIUS LIGHT_COLOR 5
+	cleffect light new (0,0,0) LIGHT_RADIUS LIGHT_COLOR LIGHT_DURATION
 	setvarg LAST_TORCH_LIGHT game.script.last_light_id
 	setvard local.lightid game.script.last_light_id
 }
@@ -83,7 +84,7 @@
 	}
 	local L_RADIUS LIGHT_RADIUS
 	add L_RADIUS $randf(-8,8)
-	cleffect light local.lightid L_POS L_RADIUS LIGHT_COLOR 5
+	cleffect light local.lightid L_POS L_RADIUS LIGHT_COLOR LIGHT_DURATION
 }
 
 {  [client] setup_flame

@@ -6,6 +6,7 @@
 	const SPRITE_FIRE_FIXED	fire1_fixed.spr
 	const SOUND_BURN		items/torch1.wav
 	//setvard LIGHT_RADIUS		128  //set in base_lighted
+	const LIGHT_DURATION 0.1 
 	const LIGHT_COLOR		(255,255,128)
 	const LIGHT_PLAYER_SCALE	0.3
 	const LIGHT_DROPPED_SCALE	0.5

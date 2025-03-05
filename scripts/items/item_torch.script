@@ -122,11 +122,11 @@
 	if SCRIPT_ID
 	clientevent update all SCRIPT_ID remove_me
 	setvard SCRIPT_ID 0
-	svplaysound const.sound.item 0 LOOPSND_NAME
+	svplaysound CHAN_ITEM 0 LOOPSND_NAME
 }
 
 {
 	repeatdelay LOOPSND_LENGTH
 	if SCRIPT_ID
-	svplaysound const.sound.item 5 LOOPSND_NAME
+	svplaysound CHAN_ITEM 5 LOOPSND_NAME
 }
