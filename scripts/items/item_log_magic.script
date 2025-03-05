@@ -39,9 +39,14 @@
 	setvard IN_WORLD 0
 }
 
-{ game_remove
-   	clientevent remove all SCRIPT_ID
+{ game_putinpack
+	clientevent remove all SCRIPT_ID
 	setvard IN_WORLD 0
+}
+
+{ game_remove
+	setvard IN_WORLD 0
+   	clientevent remove all SCRIPT_ID
 }
 
 { world_boogie

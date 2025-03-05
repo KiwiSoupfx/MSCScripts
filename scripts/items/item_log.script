@@ -31,7 +31,12 @@
 { game_pickup
   callevent end_soundfx
 	//callexternal effects/dot_fire effect_die
-   	clientevent remove all SCRIPT_ID
+  clientevent remove all SCRIPT_ID
+}
+
+{ game_putinpack
+  callevent end_soundfx
+  clientevent remove all SCRIPT_ID
 }
 
 { end_soundfx
