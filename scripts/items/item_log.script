@@ -3,6 +3,8 @@
   const MODEL_WORLD      	misc/item_log.mdl
   const MODEL_HANDS      	misc/item_log.mdl
   const TORCH_LIGHT_SCRIPT	items/item_torch_light	
+  const LOOPSND_NAME		items/torch1.wav
+	const LOOPSND_LENGTH		6
 }
 
 #include items/base_miscitem
@@ -19,14 +21,26 @@
 }
 
 { game_drop
-
+  setvard CAN_PLAY_SOUND 1
+  callevent start_soundfx
 	//applyeffect ent_me effects/dot_fire 999 $get(ent_owner,id) 0
 	clientevent persist all TORCH_LIGHT_SCRIPT $get(ent_me,index) 1
    	setvard SCRIPT_ID game.script.last_sent_id
 }
 
 { game_pickup
-
+  callevent end_soundfx
 	//callexternal effects/dot_fire effect_die
    	clientevent remove all SCRIPT_ID
+}
+
+{ end_soundfx
+  setvard CAN_PLAY_SOUND 0
+  svplaysound CHAN_ITEM 0 LOOPSND_NAME
+}
+
+{ start_soundfx
+  if CAN_PLAY_SOUND
+  repeatdelay LOOPSND_LENGTH
+  svplaysound CHAN_ITEM 5 LOOPSND_NAME
 }
